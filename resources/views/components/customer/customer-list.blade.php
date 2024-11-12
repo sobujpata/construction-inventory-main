@@ -52,7 +52,7 @@ async function getList() {
     res.data.forEach(function (item,index) {
         let row=`<tr>
                     <td>${index+1}</td>
-                    <td ><img class="w-30" src="${item['image']}"></td>
+                    <td ><img class="w-40 rounded" src="${item['image']}"></td>
                     <td>${item['name']}</td>
                     <td>${item['email']}</td>
                     <td>${item['mobile']}</td>

@@ -77,10 +77,30 @@
         <i class="bi bi-graph-up"></i>
         <span class="side-bar-item-caption">Dashboard</span>
     </a>
-
+    <a href="{{url('/owner')}}" class="side-bar-item">
+        <i class="bi bi-receipt"></i>
+        <span class="side-bar-item-caption">Owners
+        </span>
+    </a>
     <a href="{{url("/customerPage")}}" class="side-bar-item">
         <i class="bi bi-people"></i>
         <span class="side-bar-item-caption">Members</span>
+    </a>
+
+    <a href="{{url("/employee")}}" class="side-bar-item">
+        <i class="bi bi-people"></i>
+        <span class="side-bar-item-caption">Employees
+        </span>
+    </a>
+    <a href="{{url("/supplier")}}" class="side-bar-item">
+        <i class="bi bi-people"></i>
+        <span class="side-bar-item-caption">Suppliers
+        </span>
+    </a>
+    <a href="{{url('/agent')}}" class="side-bar-item">
+        <i class="bi bi-currency-dollar"></i>
+        <span class="side-bar-item-caption">Middleman/Agent
+        </span>
     </a>
 
     <a href="{{url("/categoryPage")}}" class="side-bar-item">
@@ -90,7 +110,7 @@
 
     <a href="{{url("/buy-product")}}" class="side-bar-item">
         <i class="bi bi-bag"></i>
-        <span class="side-bar-item-caption">Purchase</span>
+        <span class="side-bar-item-caption">Purchase/Expenditure</span>
     </a>
 
     <a href="{{url("/store-products")}}" class="side-bar-item">
@@ -103,23 +123,11 @@
         <span class="side-bar-item-caption">Income</span>
     </a>
 
-    <a href="{{url("/employee")}}" class="side-bar-item">
-        <i class="bi bi-people"></i>
-        <span class="side-bar-item-caption">Employees
-        </span>
-    </a>
 
-    <a href="{{url('/agent')}}" class="side-bar-item">
-        <i class="bi bi-currency-dollar"></i>
-        <span class="side-bar-item-caption">Middle man/Agent
-        </span>
-    </a>
 
-    <a href="{{url('/owner')}}" class="side-bar-item">
-        <i class="bi bi-receipt"></i>
-        <span class="side-bar-item-caption">Owners
-        </span>
-    </a>
+
+
+
 
     <a href="{{url('/building-detail')}}" class="side-bar-item">
         <i class="bi bi-file"></i>

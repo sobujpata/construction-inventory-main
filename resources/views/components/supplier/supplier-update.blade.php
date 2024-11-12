@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Agent</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update Supplier</h5>
             </div>
             <div class="modal-body">
                 <form id="update-form">
@@ -10,24 +10,24 @@
                         <div class="row">
                             <div class="col-12 p-1">
                                 <label class="form-label mt-2">Name</label>
-                                <input type="text" class="form-control" id="agentNameUpdate" placeholder="Agent name">
+                                <input type="text" class="form-control" id="supplierNameUpdate" placeholder="Supplier name">
 
                                 <label class="form-label mt-2">Company Name</label>
-                                <input type="text" class="form-control" id="agentCompanyNameUpdate" placeholder="Company Name">
+                                <input type="text" class="form-control" id="supplierCompanyNameUpdate" placeholder="Company Name">
 
                                 <label class="form-label mt-2">NID No</label>
-                                <input type="text" class="form-control" id="agentNidUpdate" placeholder="Nid no">
+                                <input type="text" class="form-control" id="supplierNidUpdate" placeholder="Nid no">
 
                                 <label class="form-label mt-2">Mobile No</label>
-                                <input type="text" class="form-control" id="agentMobileUpdate" placeholder="Mobile No">
+                                <input type="text" class="form-control" id="supplierMobileUpdate" placeholder="Mobile No">
 
                                 <label class="form-label mt-2">Address</label>
-                                <input type="text" class="form-control" id="agentAddressUpdate" placeholder="Agent Address">
+                                <input type="text" class="form-control" id="supplierAddressUpdate" placeholder="supplier Address">
                                 <br/>
                                 <img class="w-15" id="oldImg" src="{{asset('images/default.jpg')}}"/>
                                 <br/>
                                 <label class="form-label mt-2">Image</label>
-                                <input oninput="oldImg.src=window.URL.createObjectURL(this.files[0])"  type="file" class="form-control" id="agentImgUpdate">
+                                <input oninput="oldImg.src=window.URL.createObjectURL(this.files[0])"  type="file" class="form-control" id="supplierImgUpdate">
 
                                 <input type="text" class="d-none" id="updateID">
                                 <input type="text" class="d-none" id="filePath">
@@ -58,14 +58,14 @@
 
 
         showLoader();
-        let res=await axios.post("/agent-by-id",{id:id})
+        let res=await axios.post("/supplier-by-id",{id:id})
         hideLoader();
 
-        document.getElementById('agentNameUpdate').value=res.data['name'];
-        document.getElementById('agentCompanyNameUpdate').value=res.data['company_name'];
-        document.getElementById('agentNidUpdate').value=res.data['nid_no'];
-        document.getElementById('agentMobileUpdate').value=res.data['mobile'];
-        document.getElementById('agentAddressUpdate').value=res.data['address'];
+        document.getElementById('supplierNameUpdate').value=res.data['name'];
+        document.getElementById('supplierCompanyNameUpdate').value=res.data['company_name'];
+        document.getElementById('supplierNidUpdate').value=res.data['nid_no'];
+        document.getElementById('supplierMobileUpdate').value=res.data['mobile'];
+        document.getElementById('supplierAddressUpdate').value=res.data['address'];
 
     }
 
@@ -73,26 +73,26 @@
 
     async function update() {
 
-        let agentNameUpdate=document.getElementById('agentNameUpdate').value;
-        let agentCompanyNameUpdate = document.getElementById('agentCompanyNameUpdate').value;
-        let agentNidUpdate = document.getElementById('agentNidUpdate').value;
-        let agentMobileUpdate = document.getElementById('agentMobileUpdate').value;
-        let agentAddressUpdate = document.getElementById('agentAddressUpdate').value;
+        let supplierNameUpdate=document.getElementById('supplierNameUpdate').value;
+        let supplierCompanyNameUpdate = document.getElementById('supplierCompanyNameUpdate').value;
+        let supplierNidUpdate = document.getElementById('supplierNidUpdate').value;
+        let supplierMobileUpdate = document.getElementById('supplierMobileUpdate').value;
+        let supplierAddressUpdate = document.getElementById('supplierAddressUpdate').value;
         let updateID=document.getElementById('updateID').value;
         let filePath=document.getElementById('filePath').value;
-        let agentImgUpdate = document.getElementById('agentImgUpdate').files[0];
+        let supplierImgUpdate = document.getElementById('supplierImgUpdate').files[0];
 
 
-        if (agentNameUpdate.length === 0) {
+        if (supplierNameUpdate.length === 0) {
             errorToast("Product Name Required !")
         }
-        else if(agentCompanyNameUpdate.length===0){
+        else if(supplierCompanyNameUpdate.length===0){
             errorToast("Product Detailed For Required !")
         }
-        else if(agentNidUpdate.length===0){
+        else if(supplierNidUpdate.length===0){
             errorToast("Product NID No Required !")
         }
-        else if(agentMobileUpdate.length===0){
+        else if(supplierMobileUpdate.length===0){
             errorToast("Product Mobile No Required !")
         }
 
@@ -101,13 +101,13 @@
             document.getElementById('update-modal-close').click();
 
             let formData=new FormData();
-            formData.append('img',agentImgUpdate)
+            formData.append('img',supplierImgUpdate)
             formData.append('id',updateID)
-            formData.append('name',agentNameUpdate)
-            formData.append('company_name',agentCompanyNameUpdate)
-            formData.append('nid_no',agentNidUpdate)
-            formData.append('mobile_no',agentMobileUpdate)
-            formData.append('address',agentAddressUpdate)
+            formData.append('name',supplierNameUpdate)
+            formData.append('company_name',supplierCompanyNameUpdate)
+            formData.append('nid_no',supplierNidUpdate)
+            formData.append('mobile_no',supplierMobileUpdate)
+            formData.append('address',supplierAddressUpdate)
             formData.append('file_path',filePath)
 
             const config = {
@@ -117,7 +117,7 @@
             }
 
             showLoader();
-            let res = await axios.post("/agents-update",formData,config)
+            let res = await axios.post("/supplier-update",formData,config)
             hideLoader();
 
             if(res.status===200 && res.data===1){

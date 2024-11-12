@@ -15,6 +15,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\supplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -164,3 +165,12 @@ Route::post("/building-detail-create",[BuildingDetailController::class,'Building
 Route::post("/building-detail-by-id",[BuildingDetailController::class,'BuildingById'])->middleware([TokenVerificationMiddleware::class]);
 Route::post("/buildings-detail-update",[BuildingDetailController::class,'BuildingUpdate'])->middleware([TokenVerificationMiddleware::class]);
 Route::post("/building-detail-delete",[BuildingDetailController::class,'BuildingDelete'])->middleware([TokenVerificationMiddleware::class]);
+
+//Building Route
+Route::get("/supplier",[supplierController::class,'index'])->middleware([TokenVerificationMiddleware::class]);
+//Building API
+Route::get("/supplier-list",[supplierController::class,'SupplierList'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/supplier-create",[supplierController::class,'SupplierCreate'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/supplier-by-id",[supplierController::class,'SupplierById'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/supplier-update",[supplierController::class,'SupplierUpdate'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/supplier-delete",[supplierController::class,'SupplierDelete'])->middleware([TokenVerificationMiddleware::class]);

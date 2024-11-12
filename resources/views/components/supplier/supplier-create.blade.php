@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Create Builing Details</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Create Supplier</h5>
                 </div>
                 <div class="modal-body">
                     <form id="save-form">
@@ -10,23 +10,26 @@
                         <div class="row">
                             <div class="col-12 p-1">
                                 <label class="form-label mt-2">Name</label>
-                                <input type="text" class="form-control" id="ownerName" placeholder="Owner name">
+                                <input type="text" class="form-control" id="supplierName" placeholder="supplier name">
 
-                                <label class="form-label mt-2">Email</label>
-                                <input type="text" class="form-control" id="ownerEmail" placeholder="Email no">
+                                <label class="form-label mt-2">Company Name</label>
+                                <input type="text" class="form-control" id="supplierCompanyName" placeholder="Company Name">
+
+                                <label class="form-label mt-2">NID No</label>
+                                <input type="text" class="form-control" id="supplierNid" placeholder="Nid no">
 
                                 <label class="form-label mt-2">Mobile No</label>
-                                <input type="text" class="form-control" id="ownerMobile" placeholder="Mobile No">
+                                <input type="text" class="form-control" id="supplierMobile" placeholder="Mobile No">
 
                                 <label class="form-label mt-2">Address</label>
-                                <input type="text" class="form-control" id="ownerAddress" placeholder="Owner Address">
+                                <input type="text" class="form-control" id="supplierAddress" placeholder="supplier Address">
 
                                 <br/>
                                 <img class="w-15" id="newImg" src="{{asset('images/default.jpg')}}"/>
                                 <br/>
 
                                 <label class="form-label">Image</label>
-                                <input oninput="newImg.src=window.URL.createObjectURL(this.files[0])" type="file" class="form-control" id="ownerImage">
+                                <input oninput="newImg.src=window.URL.createObjectURL(this.files[0])" type="file" class="form-control" id="supplierImage">
 
                             </div>
                         </div>
@@ -46,26 +49,29 @@
 
     async function Save() {
 
-        let ownerName=document.getElementById('ownerName').value;
-        let ownerEmail = document.getElementById('ownerEmail').value;
-        let ownerMobile = document.getElementById('ownerMobile').value;
-        let ownerAddress = document.getElementById('ownerAddress').value;
-        let ownerImage = document.getElementById('ownerImage').files[0];
+        let supplierName=document.getElementById('supplierName').value;
+        let supplierCompanyName = document.getElementById('supplierCompanyName').value;
+        let supplierNid = document.getElementById('supplierNid').value;
+        let supplierMobile = document.getElementById('supplierMobile').value;
+        let supplierAddress = document.getElementById('supplierAddress').value;
+        let supplierImage = document.getElementById('supplierImage').files[0];
 
-        if (ownerName.length === 0) {
+        if (supplierName.length === 0) {
             errorToast("Product Category Required !")
         }
-
-        else if(ownerEmail.length===0){
-            errorToast("Product Email No Required !")
+        else if(supplierCompanyName.length===0){
+            errorToast("Product Detailed For Required !")
         }
-        else if(ownerMobile.length===0){
+        else if(supplierNid.length===0){
+            errorToast("Product Nid No Required !")
+        }
+        else if(supplierMobile.length===0){
             errorToast("Product Mobile No Required !")
         }
-        else if(ownerAddress.length===0){
+        else if(supplierAddress.length===0){
             errorToast("Product Address Required !")
         }
-        else if(!ownerImage){
+        else if(!supplierImage){
             errorToast("Product Image Required !")
         }
 
@@ -74,11 +80,12 @@
             document.getElementById('modal-close').click();
 
             let formData=new FormData();
-            formData.append('img',ownerImage)
-            formData.append('name',ownerName)
-            formData.append('email',ownerEmail)
-            formData.append('mobile_no',ownerMobile)
-            formData.append('address',ownerAddress)
+            formData.append('img',supplierImage)
+            formData.append('name',supplierName)
+            formData.append('company_name',supplierCompanyName)
+            formData.append('nid_no',supplierNid)
+            formData.append('mobile_no',supplierMobile)
+            formData.append('address',supplierAddress)
 
             const config = {
                 headers: {
@@ -87,7 +94,7 @@
             }
 
             showLoader();
-            let res = await axios.post("/owner-create",formData,config)
+            let res = await axios.post("/supplier-create",formData,config)
             hideLoader();
 
             if(res.status===201){

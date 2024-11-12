@@ -168,7 +168,7 @@
                                 <h5 class="mb-0 text-capitalize font-weight-bold">
                                     Tk <span id="totalCurrentMonthproduct_cost"></span>
                                 </h5>
-                                <p class="mb-0 text-sm">Total Purchase Curren Month</p>
+                                <p class="mb-0 text-sm">Total Purchase Current Month</p>
                             </div>
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
@@ -215,7 +215,7 @@
                                 <h5 class="mb-0 text-capitalize font-weight-bold">
                                     Tk <span id="totalCurrentWeekproduct_cost"></span>
                                 </h5>
-                                <p class="mb-0 text-sm">Total Purchase Curren Week</p>
+                                <p class="mb-0 text-sm">Total Purchase Current Week</p>
                             </div>
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
@@ -278,7 +278,7 @@
             <div class="card card-plain h-100  bg-dark ">
                 <div class="p-3">
                     <h4 class="mb-0 text-capitalize font-weight-bold text-white">
-                        Collection Details :
+                        Received Details :
                       </h4>
                 </div>
             </div>
@@ -337,7 +337,7 @@
                                 <h5 class="mb-0 text-capitalize font-weight-bold">
                                     Tk <span id="totalCurrentMonthCollection"></span>
                                 </h5>
-                                <p class="mb-0 text-sm">Total Collection Curren Month</p>
+                                <p class="mb-0 text-sm">Total Collection Current Month</p>
                             </div>
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
@@ -384,7 +384,7 @@
                                 <h5 class="mb-0 text-capitalize font-weight-bold">
                                     Tk <span id="totalCurrentWeekCollection"></span>
                                 </h5>
-                                <p class="mb-0 text-sm">Total Collection Curren Week</p>
+                                <p class="mb-0 text-sm">Total Collection Current Week</p>
                             </div>
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
