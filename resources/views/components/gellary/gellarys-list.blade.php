@@ -4,7 +4,7 @@
             <div class="card px-2 py-4">
                 <div class="row justify-content-between ">
                     <div class="align-items-center col">
-                        <h4>Middle Man/Agent list</h4>
+                        <h4>Gellary Menage</h4>
                     </div>
                     <div class="align-items-center col">
                         <button data-bs-toggle="modal" data-bs-target="#create-modal" class="float-end btn m-0  bg-gradient-primary">Create</button>
@@ -16,11 +16,9 @@
                     <tr class="bg-light">
                         <th>Ser No</th>
                         <th>Image</th>
-                        <th>Name</th>
-                        <th>Company Name</th>
-                        <th>NID No</th>
-                        <th>Mobile</th>
-                        <th>Address</th>
+                        <th>Title</th>
+                        <th>Short Description</th>
+                        {{-- <th>Location</th> --}}
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -42,7 +40,7 @@
 
 
         showLoader();
-        let res=await axios.get("agent-list");
+        let res=await axios.get("/gellarys-list");
         hideLoader();
 
         // console.log(res);
@@ -68,11 +66,9 @@
             let row=`<tr>
                         <td class="text-center">${index+1}</td>
                         <td><img src="${item['image']}" alt="${item['name']} image" class="w-50 rounded"> </td>
-                        <td>${item['name']}</td>
-                        <td>${item['company_name']}</td>
-                        <td>${item['nid_no']}</td>
-                        <td>${item['mobile']}</td>
-                        <td>${item['address']}</td>
+                        <td>${item['title']}</td>
+                        <td>${item['short_discription']}</td>
+
                         <td>
                             <button data-path="${item['image']}" data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
                             <button data-path="${item['image']}" data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
@@ -105,6 +101,7 @@
         });
 
     }
+
 
 </script>
 

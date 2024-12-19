@@ -4,7 +4,7 @@
             <div class="card px-2 py-4">
                 <div class="row justify-content-between ">
                     <div class="align-items-center col">
-                        <h4>Owner List</h4>
+                        <h4>Building Details</h4>
                     </div>
                     <div class="align-items-center col">
                         <button data-bs-toggle="modal" data-bs-target="#create-modal" class="float-end btn m-0  bg-gradient-primary">Create</button>
@@ -17,7 +17,7 @@
                         <th>Image</th>
                         <th>Name</th>
                         <th>Title</th>
-                        <th>Distcription</th>
+                        <th style="width: 25% !important">Distcription</th>
                         <th>Location</th>
                         <th>Total Land</th>
                         <th>No of Storied</th>
@@ -68,7 +68,7 @@
                 });
 
             let row=`<tr>
-                        <td><img src="${item['image']}" alt="${item['name']} image" class="w-50 rounded"> </td>
+                        <td><img src="${item['image']}" alt="${item['name']} image" class="w-90 rounded"> </td>
                         <td>${item['name']}</td>
                         <td>${item['title']}</td>
                         <td>${item['discription']}</td>

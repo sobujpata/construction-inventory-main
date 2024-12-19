@@ -77,6 +77,33 @@
         <i class="bi bi-graph-up"></i>
         <span class="side-bar-item-caption">Dashboard</span>
     </a>
+
+    <a href="{{url("/categoryPage")}}" class="side-bar-item">
+        <i class="bi bi-list-nested"></i>
+        <span class="side-bar-item-caption">Item Name</span>
+    </a>
+
+    <a href="{{url("/buy-product")}}" class="side-bar-item">
+        <i class="bi bi-bag"></i>
+        <span class="side-bar-item-caption">Purchase/Expenditure</span>
+    </a>
+
+    <a href="{{url("/store-products")}}" class="side-bar-item">
+        <i class="bi bi-currency-dollar"></i>
+        <span class="side-bar-item-caption">Store Balance</span>
+    </a>
+
+    <a href="{{url("/collection")}}" class="side-bar-item">
+        <i class="bi bi-currency-dollar"></i>
+        <span class="side-bar-item-caption">Income</span>
+    </a>
+
+    <a href="{{url("/other-cost")}}" class="side-bar-item">
+        <i class="bi bi-currency-dollar"></i>
+        <span class="side-bar-item-caption">Other Cost</span>
+    </a>
+
+
     <a href="{{url('/owner')}}" class="side-bar-item">
         <i class="bi bi-receipt"></i>
         <span class="side-bar-item-caption">Owners
@@ -103,25 +130,7 @@
         </span>
     </a>
 
-    <a href="{{url("/categoryPage")}}" class="side-bar-item">
-        <i class="bi bi-list-nested"></i>
-        <span class="side-bar-item-caption">Item Name</span>
-    </a>
 
-    <a href="{{url("/buy-product")}}" class="side-bar-item">
-        <i class="bi bi-bag"></i>
-        <span class="side-bar-item-caption">Purchase/Expenditure</span>
-    </a>
-
-    <a href="{{url("/store-products")}}" class="side-bar-item">
-        <i class="bi bi-currency-dollar"></i>
-        <span class="side-bar-item-caption">Store Balance</span>
-    </a>
-
-    <a href="{{url("/collection")}}" class="side-bar-item">
-        <i class="bi bi-currency-dollar"></i>
-        <span class="side-bar-item-caption">Income</span>
-    </a>
 
 
 
@@ -133,7 +142,7 @@
         <i class="bi bi-file"></i>
         <span class="side-bar-item-caption">Building Details</span>
     </a>
-    <a href="{{url('#')}}" class="side-bar-item">
+    <a href="{{url('/gellary')}}" class="side-bar-item">
         <i class="bi bi-file-earmark-bar-graph"></i>
         <span class="side-bar-item-caption">Gellary Manage</span>
     </a>

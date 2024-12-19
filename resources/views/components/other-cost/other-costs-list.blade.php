@@ -4,7 +4,7 @@
             <div class="card px-2 py-4">
                 <div class="row justify-content-between ">
                     <div class="align-items-center col">
-                        <h4>Middle Man/Agent list</h4>
+                        <h4>Other Cost</h4>
                     </div>
                     <div class="align-items-center col">
                         <button data-bs-toggle="modal" data-bs-target="#create-modal" class="float-end btn m-0  bg-gradient-primary">Create</button>
@@ -15,12 +15,11 @@
                     <thead>
                     <tr class="bg-light">
                         <th>Ser No</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Company Name</th>
-                        <th>NID No</th>
-                        <th>Mobile</th>
-                        <th>Address</th>
+                        <th>Payer</th>
+                        <th>Recipient</th>
+                        <th>Sector</th>
+                        <th>Amount</th>
+                        <th>Remarks</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -42,7 +41,7 @@
 
 
         showLoader();
-        let res=await axios.get("agent-list");
+        let res=await axios.get("other-costs-list");
         hideLoader();
 
         // console.log(res);
@@ -67,35 +66,34 @@
 
             let row=`<tr>
                         <td class="text-center">${index+1}</td>
-                        <td><img src="${item['image']}" alt="${item['name']} image" class="w-50 rounded"> </td>
-                        <td>${item['name']}</td>
-                        <td>${item['company_name']}</td>
-                        <td>${item['nid_no']}</td>
-                        <td>${item['mobile']}</td>
-                        <td>${item['address']}</td>
+                        <td>${item['user_id']}</td>
+                        <td>${item['recipient']}</td>
+                        <td>${item['sector']}</td>
+                        <td>${item['amount']}</td>
+                        <td>${item['remarks']}</td>
                         <td>
-                            <button data-path="${item['image']}" data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
-                            <button data-path="${item['image']}" data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
+                            <button data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
+                            <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
                         </td>
                     </tr>`
             tableList.append(row)
         })
         $('.editBtn').on('click', async function () {
             let id= $(this).data('id');
-            let filePath= $(this).data('path');
+            // let filePath= $(this).data('path');
             // console.log(id)
-            await FillUpUpdateForm(id,filePath)
+            await FillUpUpdateForm(id)
             $("#update-modal").modal('show');
         })
 
 
         $('.deleteBtn').on('click',function () {
             let id= $(this).data('id');
-            let path= $(this).data('path');
+            // let path= $(this).data('path');
 
             $("#delete-modal").modal('show');
             $("#deleteID").val(id);
-            $("#deleteFilePath").val(path)
+            // $("#deleteFilePath").val(path)
 
         })
 
@@ -105,6 +103,7 @@
         });
 
     }
+
 
 </script>
 

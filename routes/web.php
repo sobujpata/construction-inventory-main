@@ -1,24 +1,27 @@
 <?php
 
-use App\Http\Controllers\AgentController;
-use App\Http\Controllers\BnLocationController;
-use App\Http\Controllers\BuildingDetailController;
-use App\Http\Controllers\buyProductController;
-use App\Http\Controllers\StoreController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CollectionController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\OwnerController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\supplierController;
-use App\Http\Controllers\UserController;
-use App\Http\Middleware\TokenVerificationMiddleware;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AgentController;
+use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\GellaryController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\supplierController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BnLocationController;
+use App\Http\Controllers\buyProductController;
+use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\BuildingDetailController;
+use App\Http\Controllers\OtherCostController;
+use App\Http\Middleware\TokenVerificationMiddleware;
 
 
 // Web API Routes
@@ -36,6 +39,12 @@ Route::get('/logout',[UserController::class,'UserLogout']);
 
 // Page Routes
 Route::get('/',[HomeController::class,'HomePage']);
+
+//Home page API
+Route::get('/building-details', [HomeController::class, 'BuildingDetails']);
+Route::get('/gellary-image', [HomeController::class, 'gellaryShow']);
+Route::post('/contact-message', [MessageController::class, 'MessageSend']);
+
 Route::get('/userLogin',[UserController::class,'LoginPage']);
 Route::get('/userRegistration',[UserController::class,'RegistrationPage']);
 Route::get('/sendOtp',[UserController::class,'SendOtpPage']);
@@ -166,11 +175,29 @@ Route::post("/building-detail-by-id",[BuildingDetailController::class,'BuildingB
 Route::post("/buildings-detail-update",[BuildingDetailController::class,'BuildingUpdate'])->middleware([TokenVerificationMiddleware::class]);
 Route::post("/building-detail-delete",[BuildingDetailController::class,'BuildingDelete'])->middleware([TokenVerificationMiddleware::class]);
 
-//Building Route
+//supplier Route
 Route::get("/supplier",[supplierController::class,'index'])->middleware([TokenVerificationMiddleware::class]);
-//Building API
+//supplier API
 Route::get("/supplier-list",[supplierController::class,'SupplierList'])->middleware([TokenVerificationMiddleware::class]);
 Route::post("/supplier-create",[supplierController::class,'SupplierCreate'])->middleware([TokenVerificationMiddleware::class]);
 Route::post("/supplier-by-id",[supplierController::class,'SupplierById'])->middleware([TokenVerificationMiddleware::class]);
 Route::post("/supplier-update",[supplierController::class,'SupplierUpdate'])->middleware([TokenVerificationMiddleware::class]);
 Route::post("/supplier-delete",[supplierController::class,'SupplierDelete'])->middleware([TokenVerificationMiddleware::class]);
+
+//Gellary Route
+Route::get("/gellary",[GellaryController::class,'index'])->middleware([TokenVerificationMiddleware::class]);
+//Gellary API
+Route::get("/gellarys-list",[GellaryController::class,'GellaryList'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/gellary-create",[GellaryController::class,'GellaryCreate'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/gellary-by-id",[GellaryController::class,'GellaryById'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/gellary-update",[GellaryController::class,'GellaryUpdate'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/gellary-delete",[GellaryController::class,'GellaryDelete'])->middleware([TokenVerificationMiddleware::class]);
+
+//other-cost Route
+Route::get("/other-cost",[OtherCostController::class,'index'])->middleware([TokenVerificationMiddleware::class]);
+//other-cost API
+Route::get("/other-costs-list",[OtherCostController::class,'OtherCostList'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/other-cost-create",[OtherCostController::class,'OtherCostCreate'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/other-cost-by-id",[OtherCostController::class,'OtherCostById'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/other-cost-update",[OtherCostController::class,'OtherCostUpdate'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/other-cost-delete",[OtherCostController::class,'OtherCostDelete'])->middleware([TokenVerificationMiddleware::class]);

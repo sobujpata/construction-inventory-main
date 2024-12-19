@@ -24,7 +24,7 @@
             let deleteFilePath=document.getElementById('deleteFilePath').value;
             document.getElementById('delete-modal-close').click();
             showLoader();
-            let res=await axios.post("/building-detail-delete",{id:id,file_path:deleteFilePath})
+            let res=await axios.post("/gellary-delete",{id:id,file_path:deleteFilePath})
             hideLoader();
             if(res.data===1){
                 successToast("Request completed")

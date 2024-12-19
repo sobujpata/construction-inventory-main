@@ -3,6 +3,9 @@
 @import "progress.css";
 @import "dropdownmenu.css";
 
+.table td, .table th {
+    white-space: wrap !important;
+}
 .card-img-top {
     width: 100%;
     height: 20vw;

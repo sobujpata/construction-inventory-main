@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\BuyProduct;
+use App\Models\Employee;
+use App\Models\OtherCost;
+use App\Models\Owner;
+use App\Models\Product;
 use carbon\Carbon;
 use App\Models\Category;
 use App\Models\Customer;
@@ -26,7 +30,16 @@ class DashboardController extends Controller
         $Customer=Customer::count();
         $collection =Collection::sum('amount');
         $product_cost =BuyProduct::sum('product_cost');
+        $other_cost = OtherCost::sum('amount');
 
+        $total_cost = $product_cost + $other_cost;
+
+        $total_owner = Owner::count();
+        $total_employee = Employee::count();
+        $total_income = Collection::sum('amount');
+
+        $total_balance = $total_income - $total_cost;
+// dd($total_owner);
 
 
 
@@ -143,7 +156,12 @@ class DashboardController extends Controller
             // 'product'=> $product,
             'category'=> $Category,
             'customer'=> $Customer,
+            'owners'=> $total_owner,
+            'employees'=> $total_employee,
+            'total_income'=> $total_income,
             'product_cost'=> $product_cost,
+            'total_balance'=> round($total_balance,2),
+            'total_cost'=> round($total_cost,2),
             'total'=> round($product_cost,2),
             'total_last_month_earn_product_cost'=> round($total_last_month_earn_product_cost,2),
             'total_current_month_earn_product_cost'=> round($total_current_month_earn_product_cost,2),

@@ -10,23 +10,35 @@
                         <div class="row">
                             <div class="col-12 p-1">
                                 <label class="form-label mt-2">Name</label>
-                                <input type="text" class="form-control" id="ownerName" placeholder="Owner name">
+                                <input type="text" class="form-control" id="buildingName" placeholder="Building name">
 
-                                <label class="form-label mt-2">Email</label>
-                                <input type="text" class="form-control" id="ownerEmail" placeholder="Email no">
+                                <label class="form-label mt-2">Title</label>
+                                <input type="text" class="form-control" id="buildingTitle" placeholder="Title no">
 
-                                <label class="form-label mt-2">Mobile No</label>
-                                <input type="text" class="form-control" id="ownerMobile" placeholder="Mobile No">
+                                <label class="form-label mt-2">Distription</label>
+                                <input type="text" class="form-control" id="discription" placeholder="Distription No">
 
-                                <label class="form-label mt-2">Address</label>
-                                <input type="text" class="form-control" id="ownerAddress" placeholder="Owner Address">
+                                <label class="form-label mt-2">Location</label>
+                                <input type="text" class="form-control" id="location" placeholder="Location">
+
+                                <label class="form-label mt-2">Total Land</label>
+                                <input type="text" class="form-control" id="totalLand" placeholder="totalLand">
+
+                                <label class="form-label mt-2">No of Storied</label>
+                                <input type="text" class="form-control" id="noOstoried" placeholder="noOstoried">
+
+                                <label class="form-label mt-2">Total Tower</label>
+                                <input type="text" class="form-control" id="totalTower" placeholder="Total Tower">
+
+                                <label class="form-label mt-2">Map Location</label>
+                                <input type="text" class="form-control" id="mapLocation" placeholder="Map Location">
 
                                 <br/>
                                 <img class="w-15" id="newImg" src="{{asset('images/default.jpg')}}"/>
                                 <br/>
 
                                 <label class="form-label">Image</label>
-                                <input oninput="newImg.src=window.URL.createObjectURL(this.files[0])" type="file" class="form-control" id="ownerImage">
+                                <input oninput="newImg.src=window.URL.createObjectURL(this.files[0])" type="file" class="form-control" id="buildingImage">
 
                             </div>
                         </div>
@@ -46,26 +58,30 @@
 
     async function Save() {
 
-        let ownerName=document.getElementById('ownerName').value;
-        let ownerEmail = document.getElementById('ownerEmail').value;
-        let ownerMobile = document.getElementById('ownerMobile').value;
-        let ownerAddress = document.getElementById('ownerAddress').value;
-        let ownerImage = document.getElementById('ownerImage').files[0];
+        let buildingName=document.getElementById('buildingName').value;
+        let buildingTitle = document.getElementById('buildingTitle').value;
+        let discription = document.getElementById('discription').value;
+        let location = document.getElementById('location').value;
+        let totalLand = document.getElementById('totalLand').value;
+        let noOstoried = document.getElementById('noOstoried').value;
+        let totalTower = document.getElementById('totalTower').value;
+        let mapLocation = document.getElementById('mapLocation').value;
+        let buildingImage = document.getElementById('buildingImage').files[0];
 
-        if (ownerName.length === 0) {
+        if (buildingName.length === 0) {
             errorToast("Product Category Required !")
         }
 
-        else if(ownerEmail.length===0){
+        else if(buildingTitle.length===0){
             errorToast("Product Email No Required !")
         }
-        else if(ownerMobile.length===0){
+        else if(discription.length===0){
             errorToast("Product Mobile No Required !")
         }
-        else if(ownerAddress.length===0){
+        else if(location.length===0){
             errorToast("Product Address Required !")
         }
-        else if(!ownerImage){
+        else if(!buildingImage){
             errorToast("Product Image Required !")
         }
 
@@ -74,11 +90,15 @@
             document.getElementById('modal-close').click();
 
             let formData=new FormData();
-            formData.append('img',ownerImage)
-            formData.append('name',ownerName)
-            formData.append('email',ownerEmail)
-            formData.append('mobile_no',ownerMobile)
-            formData.append('address',ownerAddress)
+            formData.append('img',buildingImage)
+            formData.append('name',buildingName)
+            formData.append('title',buildingTitle)
+            formData.append('discription',discription)
+            formData.append('location',location)
+            formData.append('total_land',totalLand)
+            formData.append('no_of_storied',noOstoried)
+            formData.append('total_owner',totalTower)
+            formData.append('map_location',mapLocation)
 
             const config = {
                 headers: {
@@ -87,7 +107,7 @@
             }
 
             showLoader();
-            let res = await axios.post("/owner-create",formData,config)
+                let res = await axios.post("/building-detail-create",formData,config)
             hideLoader();
 
             if(res.status===201){
